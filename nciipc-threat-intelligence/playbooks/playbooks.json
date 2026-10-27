@@ -1,0 +1,299 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - NCIIP Threat Intelligence - 1.0.0",
+      "description": "Sample playbooks for NCIIP Threat Intelligence connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection.",
+      "visible": true,
+      "image": null,
+      "uuid": "ef89391a-fea6-471c-baf3-a25b3612aea2",
+      "id": 72,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "nciipc-threat-intelligence"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Fetch Indicators",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetches threat indicators from NCIIPC using MISP restSearch API",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1793018840,
+          "collection": "/api/3/workflow_collections/ef89391a-fea6-471c-baf3-a25b3612aea2",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2b598f3c-5669-490f-9589-f83c5928efd7",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Indicators",
+              "description": null,
+              "arguments": {
+                "name": "NCIIPC Threat Intelligence",
+                "config": "",
+                "params": {
+                  "date": "1d",
+                  "published": "1",
+                  "returnFormat": "json"
+                },
+                "version": "1.0.0",
+                "connector": "nciipc-threat-intelligence",
+                "operation": "fetch_indicators",
+                "operationTitle": "Fetch Indicators",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "340",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "9b4a8d94-08cd-43da-b229-8f9081bafb3a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "2b598f3c-5669-490f-9589-f83c5928efd7"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Fetch Indicators",
+              "targetStep": "/api/3/workflow_steps/9b4a8d94-08cd-43da-b229-8f9081bafb3a",
+              "sourceStep": "/api/3/workflow_steps/2b598f3c-5669-490f-9589-f83c5928efd7",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "7ccb3c67-5e05-4cb8-8278-ca0f840e9408"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "216f0fe1-3636-47b5-a05c-570107b6986c",
+          "id": 940,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "nciipc-threat-intelligence"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Event by ID",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetches full details of a specific MISP threat event by its event ID.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1793019143,
+          "collection": "/api/3/workflow_collections/ef89391a-fea6-471c-baf3-a25b3612aea2",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/78412c01-8fe9-463f-9442-6a79ab7b6802",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Event by ID",
+              "description": null,
+              "arguments": {
+                "name": "NCIIPC Threat Intelligence",
+                "config": "",
+                "params": {
+                  "eventID": "18683"
+                },
+                "version": "1.0.0",
+                "connector": "nciipc-threat-intelligence",
+                "operation": "get_event_by_id",
+                "operationTitle": "Get Event by ID",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "340",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1c3d5b88-20d3-439e-8929-ada39646fd75"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "78412c01-8fe9-463f-9442-6a79ab7b6802"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Fetch Indicators",
+              "targetStep": "/api/3/workflow_steps/1c3d5b88-20d3-439e-8929-ada39646fd75",
+              "sourceStep": "/api/3/workflow_steps/78412c01-8fe9-463f-9442-6a79ab7b6802",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "b40c6397-cd38-406e-b8b8-3c31297e083c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "ad7ce93a-2767-4f06-ba8e-9362e4892b08",
+          "id": 942,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "nciipc-threat-intelligence"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Fetch Attributes",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetches individual IOC attributes from NCIIPC MISP using attribute-level search.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1793019052,
+          "collection": "/api/3/workflow_collections/ef89391a-fea6-471c-baf3-a25b3612aea2",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/703e7f48-4755-48e7-8a8a-975555bf308a",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Attributes",
+              "description": null,
+              "arguments": {
+                "name": "NCIIPC Threat Intelligence",
+                "config": "",
+                "params": {
+                  "value": "8.8.8.8",
+                  "dateRange": "1d",
+                  "published": "1",
+                  "returnFormat": "json"
+                },
+                "version": "1.0.0",
+                "connector": "nciipc-threat-intelligence",
+                "operation": "fetch_attributes",
+                "operationTitle": "Fetch Attributes",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "340",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "e8a3e724-68f3-46ad-a19c-d5ec0be791e7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "703e7f48-4755-48e7-8a8a-975555bf308a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Fetch Indicators",
+              "targetStep": "/api/3/workflow_steps/e8a3e724-68f3-46ad-a19c-d5ec0be791e7",
+              "sourceStep": "/api/3/workflow_steps/703e7f48-4755-48e7-8a8a-975555bf308a",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c572c06b-e707-460c-aff0-c81591e15efd"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "c82d5868-570b-4e1f-8ec9-7e13513015a0",
+          "id": 941,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "nciipc-threat-intelligence"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "nciipc-threat-intelligence"
+  ]
+}

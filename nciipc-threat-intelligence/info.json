@@ -1,0 +1,190 @@
+{
+    "name": "nciipc-threat-intelligence",
+    "version": "1.0.0",
+    "label": "NCIIPC Threat Intelligence",
+    "description": "NCIIPC (National Critical Information Infrastructure Protection Centre) Threat Intelligence connector fetches threat indicators and event details from the NCIIPC MISP platform.",
+    "publisher": "Fortinet",
+    "category": [
+        "Threat Intelligence"
+    ],
+    "contributor": "Puja Kumari",
+    "cs_approved": false,
+    "cs_compatible": true,
+    "help_online": "",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "serverURL",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "description": "Base URL of the NCIIPC MISP server.",
+                "tooltip": "Base URL of the NCIIPC MISP server."
+            },
+            {
+                "title": "API Key",
+                "type": "password",
+                "name": "aPIKey",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": null,
+                "description": "Static API Key from the NCIIPC MISP portal.",
+                "tooltip": "Static API Key from the NCIIPC MISP portal."
+            },
+            {
+                "title": "Verify SSL",
+                "type": "checkbox",
+                "name": "verifySSL",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": false,
+                "description": "Specifies whether to verify the SSL certificate of the NCIIPC server.",
+                "tooltip": "Specifies whether to verify the SSL certificate of the NCIIPC server."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Fetch Indicators",
+            "operation": "fetch_indicators",
+            "annotation": "fetch_indicators",
+            "description": "Fetches threat indicators from NCIIPC using MISP restSearch API. Supports multiple output formats including JSON, CSV, and XML.",
+            "parameters": [
+                {
+                    "title": "Return Format",
+                    "type": "select",
+                    "name": "returnFormat",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "json",
+                    "description": "Format of the response data.",
+                    "tooltip": "Format of the response data.",
+                    "options": [
+                        "json",
+                        "csv",
+                        "xml"
+                    ]
+                },
+                {
+                    "title": "Date Range",
+                    "type": "text",
+                    "name": "date",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "Examples: 2d for last 2 days, 1m for last 1 month.",
+                    "tooltip": "Examples: 2d for last 2 days, 1m for last 1 month."
+                },
+                {
+                    "title": "Published",
+                    "type": "select",
+                    "name": "published",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "1",
+                    "description": "Filter by published status. 1 returns only published events. 0 returns only unpublished events. Default is 1.",
+                    "tooltip": "Filter by published status. 1 returns only published events. 0 returns only unpublished events. Default is 1.",
+                    "options": [
+                        "1",
+                        "0"
+                    ]
+                }
+            ],
+            "category": "investigation",
+            "output_schema": {}
+        },
+        {
+            "title": "Fetch Attributes",
+            "operation": "fetch_attributes",
+            "annotation": "fetch_attributes",
+            "description": "Fetches individual IOC attributes from NCIIPC MISP using attribute-level search.",
+            "parameters": [
+                {
+                    "title": "Return Format",
+                    "type": "select",
+                    "name": "returnFormat",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "json",
+                    "description": "Format of the response data.",
+                    "tooltip": "Format of the response data.",
+                    "options": [
+                        "json",
+                        "csv"
+                    ]
+                },
+                {
+                    "title": "Date Range",
+                    "type": "text",
+                    "name": "dateRange",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "Examples: 2d, 7d, 1m.",
+                    "tooltip": "Examples: 2d, 7d, 1m."
+                },
+                {
+                    "title": "Value",
+                    "type": "text",
+                    "name": "value",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "Search for a specific IOC value.",
+                    "tooltip": "Search for a specific IOC value."
+                },
+                {
+                    "title": "Published",
+                    "type": "select",
+                    "name": "published",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "1",
+                    "description": "Filter by published status. Default is 1 for published only.",
+                    "tooltip": "Filter by published status. Default is 1 for published only.",
+                    "options": [
+                        "1",
+                        "0"
+                    ]
+                }
+            ],
+            "output_schema": {},
+            "category": "investigation"
+        },
+        {
+            "title": "Get Event by ID",
+            "operation": "get_event_by_id",
+            "annotation": "get_event_by_id",
+            "description": "Fetches full details of a specific MISP threat event by its event ID.",
+            "parameters": [
+                {
+                    "title": "Event ID",
+                    "type": "text",
+                    "name": "eventID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "MISP event ID to retrieve.",
+                    "tooltip": "MISP event ID to retrieve."
+                }
+            ],
+            "output_schema": {},
+            "category": "investigation"
+        }
+    ]
+}
