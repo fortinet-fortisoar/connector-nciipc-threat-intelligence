@@ -11,8 +11,8 @@
     "cs_approved": false,
     "cs_compatible": true,
     "help_online": "",
-    "icon_small_name": "imap_small.png",
-    "icon_large_name": "imap_large.png",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
     "configuration": {
         "fields": [
             {
